@@ -52,9 +52,11 @@
                 <span class="text-black mb-5">Universitas Indonesia <i class="mx-2 fa fa-angle-right"></i>  <span style="color: #FFDD00;">{{ $on }}:</span></span>
             </div>
         
-            <div class="col-md-12 mt-5 mb-5 mx-5">
+            @if ( !request()->url('/berita') )
+              <div class="col-md-12 mt-5 mb-5 mx-5">
                 <span class="text-black">This post is also available in: <span style="color: #FFDD00;">English</span></span>
-            </div>
+              </div>
+            @endif
         
             {{-- <div class="col-md-5"><h2 class="fw-bold">Layanan Akademik Universitas</h2></div>
             <div class="col-md-7" style="width: 55%; height: 3px; background: #FFDD00;"></div> --}}

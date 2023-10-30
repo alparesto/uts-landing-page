@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('index');
 });
 
 Route::get('/about', function () { return view('about', ['on' => 'Tentang UI']); });
@@ -34,5 +36,9 @@ Route::prefix('people')->group(function () {
     });
 });
 
-Route::get('/berita', function () { return view('berita', ['on' => 'Daftar Berita']); });
+Route::get('/berita', [PostsController::class, 'index']);
 Route::get('/pengumuman', function () { return view('pengumuman', ['on' => 'Mitra']); });
+
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
